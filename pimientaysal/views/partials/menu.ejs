@@ -1,0 +1,16 @@
+<div class="ps-row ps-padding-64" id="menu">
+    <div class="ps-col l6 ps-padding-large">
+        <h1 class="ps-center">Nuestro Menu</h1>
+        <br />
+        <% platos.forEach((plato, index)=> { %>
+            <a href="/detalle/<%=index%>"><h4>
+                <%= plato.nombre %>
+            </h4> </a>
+            <p class="ps-text-grey">
+                <%= plato.descripcion %> - <%= plato.precio %>
+            </p>
+            <br />
+            <% }); %>
+                
+    </div>
+</div>
