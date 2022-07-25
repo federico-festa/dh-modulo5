@@ -25,7 +25,9 @@ const controller = {
 	// Create -  Method to store
 	store: (req, res) => {
 		let newProduct = req.body;
+		newProduct.id=(products.length + 1);
 		products.push(newProduct);
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
 		res.redirect('/')
 	},
 
