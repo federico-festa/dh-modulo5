@@ -11,11 +11,11 @@ const controller = {
 		res.render('index', {products: products});
 	},
 	search: (req, res) => {
-		let keywords = req.query.keywords;
+		let keywords = req.query.keywords.toLowerCase();
 		let productSearch = products.filter((product) => {
 			return product.name.toLowerCase().includes(keywords);
 		});
-		res.render('results', {productSearch: productSearch, products: products});
+		res.render('results', {productSearch: productSearch, products: products, keywords: keywords});
 	},
 };
 
