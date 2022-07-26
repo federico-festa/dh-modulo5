@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { CLIENT_RENEG_LIMIT } = require('tls');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
@@ -22,7 +23,7 @@ const controller = {
 	create: (req, res) => {
 		res.render('product-create-form');
 	},
-
+	
 	// Create -  Method to store
 	store: (req, res) => {
 		let newProduct = req.body;
@@ -35,11 +36,19 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		// Do the magic
+		let productToEdit = products[req.params.id-1];
+		res.render('product-edit-form', {products: products, productToEdit: productToEdit});
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		// Do the magic
+		let productsRead = fs.readFileSync(products, {encoding: 'utf-8'});
+		products.forEach((product) => {
+			if(product.id == req.params.id) {
+				let product = {name: req.body.name, price: req.body.price, discount: req.body.discount, category: req.body.category, description: req.body.description};
+			};
+		});
+		fs.writeFileSync(productsFilePath, JSON.stringify(productToEdit, null, ' '));
+		res.redirect('/');
 	},
 
 	// Delete - Delete one product from DB
