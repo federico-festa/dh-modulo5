@@ -36,21 +36,21 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		let productToEdit = products[req.params.id-1];
-		res.render('product-edit-form', {products: products, productToEdit: productToEdit});
+		let productToEdit = products.find(product => product.id == req.params.id);
+		res.render('product-edit-form', {productToEdit: productToEdit});
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		let productsRead = fs.readFileSync(products, {encoding: 'utf-8'});
-		products.forEach((product) => {
-			if(product.id == req.params.id) {
-				let product = {name: req.body.name, price: req.body.price, discount: req.body.discount, category: req.body.category, description: req.body.description};
-			};
-		});
-		fs.writeFileSync(productsFilePath, JSON.stringify(productToEdit, null, ' '));
+		const productToUpdate = products.find(product => product.id == req.params.id);
+		const productToEdit = req.body;
+		productToUpdate.name = productToEdit.name;
+		productToUpdate.price = productToEdit.price;
+		productToUpdate.discount = productToEdit.discount;
+		productToUpdate.category = productToEdit.category;
+		productToUpdate.description = productToEdit.description;
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
 		res.redirect('/');
 	},
-
 	// Delete - Delete one product from DB
 	destroy: (req, res) => {
 		let productsFilter = products.filter(product => product.id != req.params.id);
