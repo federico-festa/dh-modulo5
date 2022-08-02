@@ -12,7 +12,8 @@ const controller = {
         res.render('index');
     },
     admin: (req,res) => {
-        res.render('index');
+        let admin = req.query.user;
+        res.render('admin', {admin: admin});
     }
 }
 
