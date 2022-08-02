@@ -1,0 +1,4 @@
+El usuario ingreso a la ruta:/
+El usuario ingreso a la ruta:/admin
+El usuario ingreso a la ruta:/admin?user=juan
+El usuario ingreso a la ruta:/admin?user=Ada
