@@ -1,0 +1,10 @@
+var express = require('express');
+const userController = require('../controllers/user.controller');
+const registerValidation = require('../middlewares/userValidations');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/',  userController.index);
+router.post('/', registerValidation , userController.index);
+
+module.exports = router;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>formulario</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <div class="contenedor-principal" style="background-color:<%= locals.user.color %>">
+
+      
+      
+      <form action="/" method="post">
+
+        <% if( locals.errors ){ %>
+
+          <ul>
+            <% errors.forEach( (elemento) => { %>
+              <li> <%= elemento.msg %> </li>
+            <% }) %>
+          </ul>
+
+          <br><br>
+
+        <%  } %>
+        
+        <% if(locals.user){ %>
+          <p>
+            Hola <%= user.nombre %>, 
+            elegiste el color: <%= user.color %>, 
+            tu email es: <%= user.email %> 
+            y tu edad es: <%= user.edad %>
+          </p>
+        <% } %>
+        
+        <div>
+          <label for="nombre">nombre</label> <br>
+          <input type="text" name="nombre" id="nombre">
+        </div>
+  
+        <select name="color" id="color">
+          <option value="">sin color</option>
+          <option value="red">rojo</option>
+          <option value="green">verde</option>
+          <option value="blue">azul</option>
+        </select>
+  
+        <div>
+          <label for="email">Ingrese su email</label> <br>
+          <input type="email" name="email" id="email">
+        </div>
+  
+        <div>
+          <label for="edad">Edad:</label> <br>
+          <input type="number" name="edad" id="edad">
+        </div>
+  
+        
+        <button type="submit">Enviar</button>
+  
+  
+      </form>
+    </div>
+  </body>
+</html>
