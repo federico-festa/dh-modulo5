@@ -12,8 +12,13 @@ const userController = {
     }
 
     const user = req.body;
+    req.session.user = user;
 
     res.render('index', { user });
+  },
+  user: (req,res) => {
+    const user = req.session.user;
+    res.render('user', {user})
   }
 }
 

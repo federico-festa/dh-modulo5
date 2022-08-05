@@ -6,5 +6,6 @@ var router = express.Router();
 /* GET home page. */
 router.get('/',  userController.index);
 router.post('/', registerValidation , userController.index);
+router.get('/user', userController.user);
 
 module.exports = router;
