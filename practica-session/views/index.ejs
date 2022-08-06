@@ -4,10 +4,15 @@
     <title>formulario</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <script>
+    function backColor() {
+      let cp = document.getElementsByClassName("contenedor-principal");
+      cp.style.backgroundColor = 'rgb(35, 35, 37)';
+    };
+  </script>
   <body>
 
-    <div class="contenedor-principal" style="background-color: <%= locals.user.color %>">
-
+    <div class="contenedor-principal" style="background-color: <%= color %>">
       <form action="/" method="post">
 
         <% if( locals.errors ){ %>
@@ -59,7 +64,7 @@
         </div>
         
         <button type="submit">Enviar</button>
-        <button type="?">Olvidar color</button>
+        <button onclick="backColor()">Olvidar color</button>
   
   
       </form>
