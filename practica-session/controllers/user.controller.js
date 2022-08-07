@@ -14,7 +14,7 @@ const userController = {
       const color = req.body.color;
       res.render('index', {user, color});
     };
-    if(req.cookies.color!==undefined){
+    if(req.cookies.color){
       const color = req.cookies.color;
       res.render('index', {user, color});
     }else{
