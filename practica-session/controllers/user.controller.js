@@ -10,13 +10,13 @@ const userController = {
       return res.render('index', { errors: validations.errors, user, color });
     };
     if(req.body.recordar == 'on') {
-      res.cookie('color', req.body.color, {maxAge: 60000 });
+      res.cookie('color', req.body.color, {maxAge: 60000, path: '/'});
       const color = req.body.color;
-      res.render('index', {user, color });
+      res.render('index', { user, color });
     };
     if(req.cookies.color){
       const color = req.cookies.color;
-      res.render('index', {user, color });
+      res.render('index', { user, color });
     }else{
       const color = req.body.color;
       res.render('index', { user, color });
