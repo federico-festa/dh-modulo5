@@ -4,6 +4,11 @@
     <title>formulario</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+  <script>
+    function eraseCookie() {
+      document.cookie=cookie+';max-age=0';
+    };
+  </script>
   <body>
 
     <div class="contenedor-principal" style="background-color: <%= color %>">
@@ -58,9 +63,8 @@
         </div>
         
         <button type="submit">Enviar</button>
-        <button>Olvidar color</button>
-  
-  
+        <button type="button" onclick="window.location.href='/';">Olvidar color</button>
+
       </form>
     </div>
   </body>
