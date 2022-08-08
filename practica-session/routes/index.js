@@ -7,5 +7,6 @@ var router = express.Router();
 router.get('/',  userController.index);
 router.post('/', registerValidation , userController.index);
 router.get('/user', userController.user);
+router.post('/borrar', userController.delete);
 
 module.exports = router;

@@ -10,7 +10,7 @@ const userController = {
       return res.render('index', { errors: validations.errors, user, color });
     };
     if(req.body.recordar == 'on') {
-      res.cookie('color', req.body.color, {maxAge: 60000, path: '/'});
+      res.cookie('color', req.body.color, {maxAge: 60000});
       const color = req.body.color;
       res.render('index', { user, color });
     };
@@ -25,6 +25,10 @@ const userController = {
   user: (req, res) => {
     const user = req.session.user;
     res.render('user', { user })
+  },
+  delete: (req,res) => {
+    res.clearCookie("color");
+    res.redirect('/');
   }
 }
 
